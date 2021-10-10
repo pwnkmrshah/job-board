@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => {
@@ -9,14 +9,13 @@ Rails.application.routes.draw do
     :registrations => 'registrations'
   }
   get "home/index" 
-  root to: 'users#index'
+  root to: 'home#index'
 
 # get "jobs/download_pdf"
 
-  resources :messages
-  resources :users
+
   namespace :recruiters do
-  # root 'users#index'
+
     resources :dashboard do
       collection do
           get  :user_list

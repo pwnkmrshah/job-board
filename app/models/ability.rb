@@ -5,24 +5,24 @@ class Ability
 
   def initialize(user)
     if user.has_role? :recruiter
-      can :new
-      can :create
-      can :index
-      can :edit
-      can :update
-      can :candidates
-      can :download_pdf
-      can :destroy
-      can :user_list
-      can :chat_with_candidate
-      can :candidates
+      can :new, Job
+      can :create, Job
+      can :index, Job
+      can :edit, Job
+      can :update, Job
+      can :candidates, Job
+      can :download_pdf, Job
+      can :destroy, Job
+      can :user_list, Job
+      can :chat_with_candidate, Job
+      can :candidates, Job
     elsif user.has_role? :applicant
-      can :show
-      can :apply_job
-      can :my_favourite_jobs
-      can :favorite
-      can :user_list
-      can :chat_with_candidate
+      can :show, Job
+      can :apply_job, Job
+      can :my_favourite_jobs, Job
+      can :favorite, Job
+      can :user_list, Job
+      can :chat_with_candidate, Job
     end  
   end
 end
