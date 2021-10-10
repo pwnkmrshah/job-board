@@ -1,0 +1,31 @@
+<style type="text/css">
+   h4 {
+   margin: 2rem 0rem 1rem;
+}
+ .table-image td, .table-image th {
+   vertical-align: middle;
+}
+.table-responsive{
+    margin-top: 20%;
+    padding-left: 5%;
+    margin-right: -10%
+}
+ 
+</style>
+
+<div id="jobs">
+<%= render "job_list" %>
+</div>
+<div class="pagination-outer">
+  <nav aria-label="Page navigation">
+    <%= will_paginate @jobs, renderer: BootstrapPagination::Rails %>
+  </nav>
+</div>
+  
+
+
+  <script>
+   $(function(){
+     $('.pagination a').attr('data-remote', 'true')
+   });
+ </script>

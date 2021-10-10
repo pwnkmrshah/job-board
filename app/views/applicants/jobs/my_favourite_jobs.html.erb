@@ -1,0 +1,47 @@
+
+<h2>Available Jobs</h2>
+<%= link_to "Back", :back %> 
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr></tr>
+    <th>Company Name</th>
+    <th>Title</th>
+    <th>Required Skills</th>
+    <th>Description</th>
+    <th>Locality</th>
+    <th colspan="2">Actions</th>
+  </thead>
+  <tbody>
+    <% @jobs.each_with_index do |job, index|   %>
+      <tr>
+        <td>
+      <%=job.company_name%> 
+    </td>
+    <td>
+      <%=job.title%>  
+    </td>
+    <td>
+      <%=job.skills%> 
+    </td>
+    <td>
+      <%=job.description%>  
+    </td>
+    <td>
+      <%=job.locality%> 
+    </td>
+    <td>
+      <%if  already_applied(job.id) %>
+        Alerady  applied
+      <%else%>
+        <%= link_to 'View job', applicants_job_path(id: job.id), class: "btn btn-primary" %>
+      <%end%>
+    </td>
+
+    
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-center">
+  <%= will_paginate @jobs %>
+</div>

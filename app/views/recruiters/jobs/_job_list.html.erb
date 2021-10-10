@@ -1,0 +1,43 @@
+
+<div class="table-responsive"  style="width: 90%">
+  <table class="table table-bordered table-hover logstableBox" id="table-1">
+    <%if @jobs.present?%>   
+    <thead  class="thead-light">
+
+      <tr>
+            <th scope="col">Company Name</th>
+            <th scope="col">Job Title</th>
+            <th scope="col">Job Type</th>
+            <th scope="col">Job Categroy</th>
+            <th colspan="3">Action</th>
+          </tr>
+    </thead>
+        <tbody>
+
+          <%@jobs.each_with_index do |job, index| %>
+          <tr>
+            <td><%= job.company_name%></td>
+            <td><%= job.title%></td>
+            <td><%= job.job_type%></td>
+            <td><%= job.category%></td>
+            <td>
+              <!-- <a  class="btn btn-primary" href="<%= recruiters_job_path(job.id) %>"><i class="far fa-eye"></i></a>
+              <a  class="btn btn-success" href="<%= edit_recruiters_dashboard_path(job.id) %>"><i class="fas fa-edit"></i></a>
+            <a  class="btn btn-danger" href="<%= recruiters_job_path(job.id) %>"  method="delete"><i class="far fa-trash-alt"></i></a> -->
+             <%= link_to 'Edit', edit_recruiters_job_path(id: job.id) %>
+             <%#= link_to 'View', edit_recruiters_job_path(id: job.id) %>
+             <%= link_to 'Delete', recruiters_job_path(id: job.id) ,:method => :delete %>
+            </td>
+          </tr>
+          <%end%>
+          
+        </tbody>
+
+    </table>
+    <%end%>
+</div>
+  <script>
+   $(function(){
+     $('.pagination a').attr('data-remote', 'true')
+   });
+ </script>
