@@ -14,6 +14,8 @@ module JobBoard
 config.assets.paths << Rails.root.join("app", "assets", "fonts") 
 
 
+  config.action_cable.mount_path = '/websocket'
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

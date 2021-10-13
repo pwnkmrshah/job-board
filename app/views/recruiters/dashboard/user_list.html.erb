@@ -1,0 +1,11 @@
+<div>
+    <h1>Contacts</h1>
+    <div style="margin-top:10%">
+        <%= form_for :users, :url => chat_with_candidate_recruiters_dashboard_index_path,  :html => { :method => 'GET' } do |f| %>
+            <%= hidden_field_tag "user_id", current_user.id%>
+            <%= hidden_field_tag "receiver_id", 2%>
+            
+            <%= f.submit "Chat"%>
+        <% end %>
+    </div>
+</div>

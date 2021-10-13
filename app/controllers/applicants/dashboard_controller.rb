@@ -8,6 +8,8 @@ class Applicants::DashboardController < ApplicationController
 
 	def index
 		get_all_jobs
+		@part_time_jobs = @jobs.part_time   
+		@full_time_jobs =@jobs.full_time
 	end
 
 	def job

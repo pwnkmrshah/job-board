@@ -1,0 +1,25 @@
+<div class="row">
+	<%@full_time_jobs.each_with_index do |job, index| %>
+    <div class="col-md-6">
+        <div class="single-job-post">
+             <div class="img-icon">
+                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
+            </div>
+            <div class="address">
+                <h6><%= job.company_name.titleize %></h6>
+                <p><span><%= job.title.titleize %></span></p>
+                <p>Location : <%= job.locality.titleize %></p>
+            </div>
+            <div class="button-box"><a href="<%= applicants_job_path(job.id)%>" class="button button-black">APPLY NOW</a></div>
+               <div class="button-box">
+	           <%= form_for :user, :url => chat_with_candidate_recruiters_dashboard_index_path,  :html => { :method => 'GET' } do |f| %>
+	            <%= hidden_field_tag "user_id", current_user.id%>
+	            <%= hidden_field_tag "receiver_id", job.recruiter.id%>
+	            <%= f.submit "Chat"%>
+	        <% end %>
+	        </div>
+            
+        </div>                                    
+    </div>
+    <%end%>
+</div>

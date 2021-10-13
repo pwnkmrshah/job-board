@@ -17,7 +17,7 @@ After login page for applicants
                         <div class="col-md-12">
                             <div class="section-title text-center ">
                                 <h2>All Job</h2>
-                                <p>Lorem ipsum dolor sit amet, contetur adipisil elit sed do</p>
+                                <p>Apply for jobs...</p>
                             </div>
                         </div>
                     </div>
@@ -25,17 +25,15 @@ After login page for applicants
                     <div class="all-job-post">
                         <!-- Nav tabs -->
                         <div class="post-tab nav">
-                            <a class="nav-link active show" data-toggle="tab" href="#featured">FEATURED JOBS</a>
-                            <a class="nav-link" data-toggle="tab" href="#recent_job">RECENT JOBS</a>
-                            <a class="nav-link" data-toggle="tab" href="#featured">PART TIME</a>
-                            <a class="nav-link" data-toggle="tab" href="#recent_job">FULL TIME</a>
+                            <a class="nav-link active show" data-toggle="tab" href="#recent_job">RECENT JOBS</a>
+                            <a class="nav-link" data-toggle="tab" href="#part_time">PART TIME</a>
+                            <a class="nav-link" data-toggle="tab" href="#full_time">FULL TIME</a>
                         </div>                            
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active show" id="featured">
+                            <div class="tab-pane active show" id="recent_job">
                                 <div class="row">
                                 	<%@jobs.each_with_index do |job, index| %>
-                                	<%#byebug if index  == 0%>
                                     <div class="col-md-6">
                                         <div class="single-job-post">
                                              <div class="img-icon">
@@ -132,154 +130,13 @@ After login page for applicants
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane" id="recent_job">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6>Font-End Develper</h6>
-                                                <p>Publisher : Company Name</p>
-                                                <p>In : Web</p>
-                                                <p>Date : 18.05.2018</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6>Senior Software Engineer</h6>
-                                                <p>Publisher : Company Name</p>
-                                                <p>In : Engineering</p>
-                                                <p>Date : 11.05.2018</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6>Platform/Backend Engineer</h6>
-                                                <p>Publisher : Company Name</p>
-                                                <p>In : Engineering</p>
-                                                <p>Date : 09.02.2018</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6>Social media Specialist</h6>
-                                                <p>Publisher : Company Name</p>
-                                                <p>In : Media</p>
-                                                <p>Date : 01.10.2018</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6>Platform/Backend Engineer</h6>
-                                                <p>Publisher : Company Name</p>
-                                                <p>In : Engineering</p>
-                                                <p>Date : 09.02.2018</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6>Hiring Online English Teachers</h6>
-                                                <p>Publisher : Company Name</p>
-                                                <p>In : Designer</p>
-                                                <p>Date : 14.09.2018</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
-                                </div>
+                            <div class="tab-pane" id="part_time">
+                                <%=render partial: 'part_time'%>
+                            </div>
+                            <div class="tab-pane" id="full_time">
+                                <%=render partial: 'full_time'%>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-          <div class="woring-area2 pt-130 pb-100 pt-sm-60 pb-sm-30">
-                    <div class="container">
-                        <!-- Section Title Start -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="section-title text-center ">
-                                    <h2>How It Works</h2>
-                                    <p>Lorem ipsum dolor sit amet, contetur adipisil elit sed do</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Section Title End -->
-                        <div class="row work-shap work-shop2">
-                            <div class="col-md-4">
-                                <div class="work-item">
-                                    <div class="img-icon">
-                                        <img src="images/icons/wrk1.png" alt="">
-                                        <span>1</span>
-                                    </div>
-                                    <h5>Create An Account</h5>
-                                    <p>Lorem ipsum dolor sit amet, contetur adipisil elit, sed do eiusmod tempor incididunt ut lab et dolore magna aliqua.</p>
-                                </div> 
-                            </div>
-                            <div class="col-md-4">
-                                <div class="work-item">
-                                    <div class="img-icon">
-                                        <img src="images/icons/wrk2.png" alt="">
-                                        <span>2</span>
-                                    </div>
-                                    <h5>Search Desired Job</h5>
-                                    <p>Lorem ipsum dolor sit amet, contetur adipisil elit, sed do eiusmod tempor incididunt ut lab et dolore magna aliqua.</p>
-                                </div> 
-                            </div>
-                            <div class="col-md-4">
-                                <div class="work-item">
-                                    <div class="img-icon">
-                                        <img src="images/icons/wrk3.png" alt="">
-                                        <span>3</span>
-                                    </div>
-                                    <h5>Send Your Resume</h5>
-                                    <p>Lorem ipsum dolor sit amet, contetur adipisil elit, sed do eiusmod tempor incididunt ut lab et dolore magna aliqua.</p>
-                                </div> 
-                            </div>
-                        </div>                        
-                    </div>
-                </div>

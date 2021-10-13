@@ -4,14 +4,14 @@
                     <div class="all-job-post">
                         <!-- Nav tabs -->
                         <div class="post-tab nav">
-                            <a class="nav-link" data-toggle="tab" href="#featured">FULL TIME</a>
-                            <a class="nav-link  active" data-toggle="tab" href="#recent_job">PART TIME</a>
-                            <a class="nav-link" data-toggle="tab" href="#featured">FREELANCER</a>
-                            <a class="nav-link" data-toggle="tab" href="#recent_job">FREELANCER</a>
+
+                            <a class="nav-link" data-toggle="tab" href="#">Applicant list...</a>
+                            <!-- <a class="nav-link  active" data-toggle="tab" href="#part_time">PART TIME</a> -->
+                            <!-- <a class="nav-link" data-toggle="tab" href="#full_time">FULL TIME</a> -->
                         </div>                            
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="featured">
+                            <div class="tab-pane active" id="recent_job">
                                 <div class="row">
                                   <%@jobs.each_with_index do |job, index| %>
                                     <div class="col-md-6">
@@ -26,150 +26,43 @@
                                             </div>
                                             <div class="button-box">
                                               <%if job.resume.exists?%>
-                                                <%= link_to "Download",    job.resume.url(:original, false), download: 'data', class:"button button-black" %>
+                                                <%= link_to "View Resume",    job.resume.url(:original, false), class:"button button-black" %>
                                               <%else%>
                                               <a href="#"class="button button-black">No resume</a>
                                                
                                                <%end%>
                                               <!-- <a href="<%#=job.resume.url(:original, false)%>" download="data" class="button button-black">VIEW RESUME</a> -->
                                             </div>
+                                            <div class="button-box">
+                                               <%= form_for :user, :url => chat_with_candidate_recruiters_dashboard_index_path,  :html => { :method => 'GET' } do |f| %>
+                                                <%= hidden_field_tag "user_id", current_user.id%>
+                                                <%= hidden_field_tag "receiver_id", job.applicant.id%>
+                                                <%= f.submit "Chat"%>
+                                            <% end %>
+                                            </div>
 
-                                        </div>                                    
+                                        </div>  
+
                                     </div>
                                     <%end%>
+                                    <div class="pagination-outer find_teacher_class">
+                                      <nav aria-label="Page navigation">
+                                        <%#= will_paginate @jobs, renderer: BootstrapPagination::Rails %>
+                                      </nav>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="loadmorebtn">
-                                            <a href="#" class="button">Load More</a>
+                                            <%= will_paginate @jobs, renderer: BootstrapPagination::Rails %>
                                         </div>
-                                    </div>
-                                    <div class="pagination-outer">
-  <nav aria-label="Page navigation">
-    <%= will_paginate @jobs, renderer: BootstrapPagination::Rails %>
-  </nav>
-</div>
-  
+                                    </div>  
                                 </div>
                             </div>
-                            <div class="tab-pane" id="recent_job">
+                            <div class="tab-pane" id="part_time">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <img src="images/candidates/8.jpg" alt="">
-                                            </div>
-                                            <div class="address">
-                                                <h6>Applicant Name</h6>
-                                                <p><span>Designation</span></p>
-                                                <p>$ 5000  (Min)</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">VIEW RESUME</a></div>
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <img src="images/candidates/7.jpg" alt="">
-                                            </div>
-                                            <div class="address">
-                                                <h6>Applicant Name</h6>
-                                                <p><span>Designation</span></p>
-                                                <p>$ 5000  (Min)</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">VIEW RESUME</a></div>
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <img src="images/candidates/6.jpg" alt="">
-                                            </div>
-                                            <div class="address">
-                                                <h6>Applicant Name</h6>
-                                                <p><span>Designation</span></p>
-                                                <p>$ 5000  (Min)</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">VIEW RESUME</a></div>
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <img src="images/candidates/5.jpg" alt="">
-                                            </div>
-                                            <div class="address">
-                                                <h6>Applicant Name</h6>
-                                                <p><span>Designation</span></p>
-                                                <p>$ 5000  (Min)</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">VIEW RESUME</a></div>
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <img src="images/candidates/4.jpg" alt="">
-                                            </div>
-                                            <div class="address">
-                                                <h6>Applicant Name</h6>
-                                                <p><span>Designation</span></p>
-                                                <p>$ 5000  (Min)</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">VIEW RESUME</a></div>
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <img src="images/candidates/3.jpg" alt="">
-                                            </div>
-                                            <div class="address">
-                                                <h6>Applicant Name</h6>
-                                                <p><span>Designation</span></p>
-                                                <p>$ 5000  (Min)</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">VIEW RESUME</a></div>
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <img src="images/candidates/2.jpg" alt="">
-                                            </div>
-                                            <div class="address">
-                                                <h6>Applicant Name</h6>
-                                                <p><span>Designation</span></p>
-                                                <p>$ 5000  (Min)</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">VIEW RESUME</a></div>
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <img src="images/candidates/1.jpg" alt="">
-                                            </div>
-                                            <div class="address">
-                                                <h6>Applicant Name</h6>
-                                                <p><span>Designation</span></p>
-                                                <p>$ 5000  (Min)</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">VIEW RESUME</a></div>
-                                        </div>                                    
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="loadmorebtn">
-                                            <a href="#" class="button">Load More</a>
-                                        </div>
-                                    </div>
+                                    <%#=render partial: 'part_time' %>
+                                </div>
+                                <div class="row">
+                                    <%#=render partial: 'full_time' %>
                                 </div>
                             </div>
                         </div>

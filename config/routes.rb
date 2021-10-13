@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+  mount ActionCable.server => '/cable'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => {
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
   get "home/index" 
   root to: 'home#index'
 
+  resources :messages
 # get "jobs/download_pdf"
 
 

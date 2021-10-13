@@ -14,6 +14,10 @@ config.reload_classes_only_on_change = false
 
   # Show full error reports.
   config.consider_all_requests_local = true
+config.action_cable.url = "ws:localhost:3000/cable"
+
+  config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
+  config.action_cable.worker_pool_size = 5
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
