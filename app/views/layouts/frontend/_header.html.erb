@@ -1,17 +1,4 @@
-<style type="text/css">
-  .header-area{z-index: 10; position: relative;}
-  .sticky {
-    background: rgba(255, 255, 255, 0.9) none repeat scroll 0 0;
-    box-shadow: 0 1px 3px rgb(50 50 50 / 40%);
-    left: 0;
-    margin: auto;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: 999;
-}
-</style>
+<%#is_active  = %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark header-area  sticky">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
@@ -23,23 +10,26 @@
         <ul class="navbar-nav ms-md-auto gap-2">
           <%if current_user.has_role? :recruiter%>
           <li class="nav-item rounded">
-            <a class="nav-link active" aria-current="page" href="<%=new_recruiters_job_path%>"><i class="bi bi-house-fill me-2"></i>Post Job</a>
+            <a class="nav-link <%= current_class?(new_recruiters_job_path) %>" aria-current="page" href="<%=new_recruiters_job_path%>"><i class="bi bi-house-fill me-2"></i>Post Job</a>
           </li>
           <li class="nav-item dropdown rounded">
-            <a class="nav-link" href="<%=candidates_recruiters_jobs_path%>"><i class="bi bi-people-fill me-2"></i>Candidates</a>
+            <a class="nav-link <%= current_class?(candidates_recruiters_jobs_path) %>" href="<%=candidates_recruiters_jobs_path%>"><i class="bi bi-people-fill me-2"></i>Candidates</a>
           </li>
+          <li class="nav-item rounded">
+            <a class="nav-link <%= current_class?(recruiters_jobs_url) %>" href="<%=recruiters_jobs_url%>"><i class="bi bi-telephone-fill me-2"></i>Jobs</a>
+          </li>
+          <%elsif current_user.has_role? :applicant%>
           <li class="nav-item dropdown rounded">
+            <a class="nav-link <%= current_class?(my_applications_applicants_dashboard_index_path) %>" href="<%=my_applications_applicants_dashboard_index_path%>"><i class="bi bi-people-fill me-2"></i>My Applications </a>
+          </li>
+          <li class="nav-item rounded">
+            <a class="nav-link <%= current_class?(job_applicants_dashboard_index_url) %>" href="<%=job_applicants_dashboard_index_url%>"><i class="bi bi-telephone-fill me-2"></i>Jobs</a>
           </li>
           <%end%>
-            <a class="nav-link" href="<%=user_list_recruiters_dashboard_index_path%>"><i class="bi bi-people-fill me-2"></i>Message </a>
-          <li class="nav-item rounded">
-            <a class="nav-link" href="#"><i class="bi bi-telephone-fill me-2"></i>Contact</a>
-          </li>
           <li class="nav-item dropdown rounded">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill me-2"></i>Profile</a>
+            <a class="nav-link dropdown-toggle <%= current_class?(my_account_recruiters_dashboard_index_path) %>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill me-2"></i>Profile</a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Account</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="<%= my_account_recruiters_dashboard_index_path %>">My Account</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

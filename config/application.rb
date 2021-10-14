@@ -13,6 +13,8 @@ module JobBoard
     # config.paperclip_defaults = { storage: :fog, fog_credentials: { provider: "Local", local_root: "#{Rails.root}/public"}, fog_directory: "", fog_host: "localhost"}
 config.assets.paths << Rails.root.join("app", "assets", "fonts") 
 
+config.serve_static_assets = true
+
 
   config.action_cable.mount_path = '/websocket'
 

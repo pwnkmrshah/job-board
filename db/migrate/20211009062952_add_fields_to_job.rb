@@ -7,5 +7,9 @@ class AddFieldsToJob < ActiveRecord::Migration[6.1]
     add_column :applied_jobs, :applicant_name, :string
     add_column :applied_jobs, :applicant_email, :string
     add_column :applied_jobs, :applicant_experience, :integer
+    add_column :users, :address, :string
+    add_column :users, :total_experience, :integer
+    add_column :users, :qualification, :string
+    add_attachment :users, :dp
   end
 end

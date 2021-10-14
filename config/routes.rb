@@ -19,9 +19,10 @@ Rails.application.routes.draw do
 
 
   namespace :recruiters do
-
     resources :dashboard do
       collection do
+          get  :my_account
+          post  :my_account
           get  :user_list
           get  :chat_with_candidate
       end
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
     resources :dashboard do
       collection do
         match  :job, via: [:get,  :post]
+        get :my_applications
       end
     end 
 

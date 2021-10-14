@@ -6,7 +6,7 @@ module Applicants
     # end
 
   def get_all_jobs
-    @jobs = Job.all.paginate(page: params[:page], per_page: 5)
+    @jobs = Job.all.paginate(page: params[:page], per_page: 25)
 
   end
 

@@ -1148,3 +1148,7 @@ p.panel-title {
 .page-link .arrow-left, .page-link .arrow-right {margin-left: 13px;width: 11px;height: 11px;border-width: 2px;border-color: #A9A8A9;}
 
 .pagination .disabled span {color: #ccc;}
+
+
+.header-area{z-index: 10; position: relative;}
+.sticky {background: rgba(255, 255, 255, 0.9) none repeat scroll 0 0;box-shadow: 0 1px 3px rgb(50 50 50 / 40%);left: 0;margin: auto;position: fixed;right: 0;top: 0;width: 100%;z-index: 999;}

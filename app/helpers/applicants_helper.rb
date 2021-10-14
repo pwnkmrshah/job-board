@@ -4,8 +4,8 @@ module ApplicantsHelper
 
 	end
 
-	def already_applied(job_id)
-		current_user.applied_jobs&.map(&:job_id).include? job_id
+	def already_applied(job)
+		job.applied_jobs.find_by(applicant_id:current_user.id)
 	end
 
 	def is_favorite(job)

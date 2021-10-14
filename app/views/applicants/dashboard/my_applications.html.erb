@@ -4,23 +4,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title text-center ">
-                    <h2>All Job</h2>
-                    <p>Apply for jobs...</p>
+                    <h2>My applied Jobs</h2>
                 </div>
             </div>
         </div>
-        <%= render partial: 'layouts/shared/search'%>
         <!-- Section Title End -->
         <div class="all-job-post">
             <!-- Nav tabs -->
             <div class="post-tab nav">
-                <a class="nav-link active show" data-toggle="tab" href="#recent_job">RECENT JOBS</a>
+                <a class="nav-link active show" data-toggle="tab" href="#recent_job">MY APPLICATION</a>
             </div>                            
             <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane active show" id="recent_job">
                     <div class="row">
-                    	<%@jobs.each_with_index do |job, index| %>
+                    	<%@my_jobs.each_with_index do |job, index| %>
                         <div class="col-md-6">
                             <div class="single-job-post">
                                  <div class="img-icon">
@@ -28,20 +26,12 @@
                                      <img src='/assets/images/company-logo/company.png' alt='icon' />
                                 </div>
                                 <div class="address">
-                                    <h6><%= job.company_name.titleize %></h6>
-                                    <p><span><%= job.title.titleize %></span></p>
-                                    <p>Location : <%= job.locality.titleize %></p>
-                                    <p>Job Type : <%= job.job_type.titleize %></p>
+                                    <h6><%= job.job.company_name.titleize %></h6>
+                                    <p><span><%= job.job.title.titleize %></span></p>
+                                    <p>Location : <%= job.job.locality.titleize %></p>
+                                    <p>Job Type : <%= job.job.job_type.titleize %></p>
                                 </div>
-                              <%if already_applied(job).present?%>
-                                Already Applied
-                              <%else%>
-                              <div class="button-box"><a href="<%= applicants_job_path(job.id)%>" class="button button-black">APPLY NOW</a></div> </a>
-                               
-                               <%end%>
-                              <!-- <a href="<%#=job.resume.url(:original, false)%>" download="data" class="button button-black">VIEW RESUME</a> -->
-                            <!-- </div> -->
-                                
+                                <div class="button-box"><a href="<%#= applicants_job_path(job.id)%>" class="button button-black">VIEW APPLICATION</a></div> </a>
                             </div>                                    
                         </div>
                         <%end%>

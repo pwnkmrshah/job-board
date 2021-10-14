@@ -8,6 +8,10 @@ class Recruiters::DashboardController < ApplicationController
 		
 	end
 
+	def my_account
+		current_user.update(user_params) if request.post?
+	end
+	
 	def user_list
         @users = User.all 
     end 
@@ -18,4 +22,10 @@ class Recruiters::DashboardController < ApplicationController
         @messages = Message.where(sender_id: @sender.id, receiver_id: @receiver.id).or(Message.where(sender_id: @receiver.id, receiver_id: @sender.id))
         @chat_id = [@sender.id, @receiver.id].sort.join("") #generates a unique identifier for a pair of user 
     end 
+end
+
+private
+def user_params
+	params.require(:user).permit(:name,:dp, :qualification, :address,  :phone, :total_experience )
+	
 end

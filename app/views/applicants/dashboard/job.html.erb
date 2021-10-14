@@ -1,53 +1,56 @@
+<div class="job-categroy-area2 pt-130 pb-100 pt-sm-60 pb-sm-40">
+                  <div class="container">
+                    <!-- Section Title Start -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-title text-center ">
+                                <h2>All Jobs</h2>
+                                <p>Lorem ipsum dolor sit amet, contetur adipisil elit sed do</p>
+                            </div>
+                        </div>
+                    </div>
 
-<h2>Available Jobs</h2>
-<%= link_to "Back", :back %> 
-<table class="table table-bordered">
-  <thead class="thead-dark">
-    <tr></tr>
-    <th>Company Name</th>
-    <th>Title</th>
-    <th>Required Skills</th>
-    <th>Description</th>
-    <th>Locality</th>
-    <th colspan="2">Actions</th>
-  </thead>
-  <tbody>
-    <% @jobs.sort.each do |job|   %>
-      <tr>
-        <td>
-      <%=job.company_name%> 
-    </td>
-    <td>
-      <%=job.title%>  
-    </td>
-    <td>
-      <%=job.skills%> 
-    </td>
-    <td>
-      <%=job.description%>  
-    </td>
-    <td>
-      <%=job.locality%> 
-    </td>
-    <td>
-      <%if  already_applied(job.id) %>
-        Alerady  applied
-      <%else%>
-        <%= link_to 'View job', applicants_job_path(id: job.id), class: "btn btn-primary" %>
-      <%end%>
-    </td>
-    <td>
-        <%if  is_favorite(job)%>
-          <%= link_to "unfavorite", favorite_applicants_job_path(job, type: "unfavorite"), method: :put %>
-        <%else%>
-          <%= link_to "favorite",   favorite_applicants_job_path(job, type: "favorite"), method: :put %>
-        <%end%>
-    </td>
-    
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<div class="text-center">
-  <%= will_paginate @jobs %>
-</div>
+                    <!-- Search start -->
+                    <%= render partial: 'layouts/shared/search'%>
+                    <!-- Search End -->
+                    <!-- Section Title End -->
+                    <div class="all-job-post">
+                        <!-- Nav tabs -->
+                        <div class="post-tab nav">
+                            <a class="nav-link active show" data-toggle="tab" href="#recent_job">RECENT JOBS</a>
+                            <a class="nav-link" data-toggle="tab" href="#part_time">PART TIME</a>
+                            <a class="nav-link" data-toggle="tab" href="#full_time">FULL TIME</a>
+                        </div>                            
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active show" id="recent_job">
+                                <div class="row">
+                                    <%@jobs.each_with_index do |job, index| %>
+                                    <div class="col-md-6">
+                                        <div class="single-job-post">
+                                             <div class="img-icon">
+                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
+                                            </div>
+                                            <div class="address">
+                                                <h6><%= job.company_name.titleize %></h6>
+                                                <p><span><%= job.title.titleize %></span></p>
+                                                <p>Location : <%= job.locality.titleize %></p>
+                                                <p>Job Type : <%= job.job_type.titleize %></p>
+                                            </div>
+                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
+                                            
+                                        </div>                                    
+                                    </div>
+                                    <%end%>
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="part_time">
+                                <%=render partial: 'part_time' %>
+                            </div>
+                            <div class="tab-pane " id="full_time">
+                                <%=render partial: 'full_time' %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>

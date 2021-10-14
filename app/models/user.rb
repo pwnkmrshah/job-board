@@ -19,4 +19,9 @@ class User < ApplicationRecord
     has_many :senders, through: :messagee
     has_many :messaged, foreign_key: :sender_id, class_name: 'Message'
     has_many :receivers, through: :messaged
+
+      has_attached_file :dp
+    validates_attachment :dp,
+                     content_type: { content_type: /\Aimage\/.*\z/ }
+
 end
