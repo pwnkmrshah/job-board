@@ -30,6 +30,7 @@ class Applicants::JobsController < ApplicationController
 		job.status = 'active'
 		job.applied_date   = Date.today
 		job.save!
+		EmailWorker.perform_async  'applied_job', job.id
 		redirect_to applicants_dashboard_index_path
 	end
 

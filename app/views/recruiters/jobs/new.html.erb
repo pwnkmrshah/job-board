@@ -24,6 +24,7 @@
             <div class="title"><span>Job Details</span></div>
             <div class="single-job-form">
               <div class="single-info pb-14">
+                <%= f.hidden_field :user_id, value: current_user.id %>
                 <%= f.label :company_name, class: "uppercase pull-left m-0"%>
                 <!-- <label for="title" class="uppercase pull-left m-0">Job Title</label> -->
                 <div class="form-box fix">

@@ -110,6 +110,13 @@ ActiveRecord::Schema.define(version: 2021_10_10_051611) do
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "address"
+    t.integer "total_experience"
+    t.string "qualification"
+    t.string "dp_file_name"
+    t.string "dp_content_type"
+    t.integer "dp_file_size"
+    t.datetime "dp_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

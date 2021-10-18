@@ -18,18 +18,31 @@ class Recruiters::JobsController < ApplicationController
 	end
 	
 	def create
-		byebug
 		job = Job.new(job_params)
 		job.save!
-		JobMailer.post_job(job).deliver_now
+		EmailWorker.perform_async  'posted_job', job.id
 		redirect_to recruiters_jobs_path, notice: "Job added."
 	end
 
 	def update
 		job = Job.find_by_id(params[:id])
 		job.update(job_params)
+		EmailWorker.perform_async  'posted_job', job.id
 		redirect_to recruiters_jobs_path, notice: "Job updated."
 		
+	end
+
+	def approve_resume
+		byebug
+		job = AppliedJob.find_by_id(params[:id])
+		job.update(status: 'approved')
+	end
+
+
+	def reject_resume
+		byebug
+		job = AppliedJob.find_by_id(params[:id])
+		job.update(status: 'rejected')
 	end
 
 	def destroy
@@ -44,5 +57,5 @@ end
 private
 
 def job_params
-	params.require(:job).permit(:company_name, :title, :skills, :description, :locality, :user_id, :category, :type, :closing_date)
+	params.require(:job).permit(:company_name, :title, :skills, :job_type, :description, :locality, :user_id, :category, :type, :closing_date)
 end

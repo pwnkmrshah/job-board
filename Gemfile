@@ -72,3 +72,4 @@ gem 'sassc-rails', '>= 2.1.0'
 
 
 gem 'font-awesome-sass', '~> 4.4.0'
+gem 'sidekiq', '~>6.0.0'
