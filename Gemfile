@@ -51,7 +51,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
-
+gem 'stripe', '~> 5.39'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'activeadmin'
@@ -72,3 +72,7 @@ gem 'sassc-rails', '>= 2.1.0'
 
 
 gem 'font-awesome-sass', '~> 4.4.0'
+
+gem 'stripe', '~> 5.39'
+gem 'toastr-rails', '~> 1.0'
+gem 'rack-cors', :require => 'rack/cors'

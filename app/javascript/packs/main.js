@@ -1,216 +1,239 @@
-/*
-
-Template:  Jobhere
-Author: author name
-Version: 1
-Design and Developed by: Devitems
-
-*/
-/*================================================
-[  Table of contents  ]
-================================================
-	01. Sticky Menu
-	02. Owl Carousel
-	03. ScrollUp jquery
-	04. wow js active
-	05. jQuery MeanMenu
-	06. Counter Up
-	07. Textilate Activation
-	08. Video Player
-	09. Mail Chimp
-	10. ColorSwitcher
-
- 
-======================================
-[ End table content ]
-======================================*/
-
-
-(function($) {
-    "use strict";
-    
-/*------------------------------------
-    01. Sticky Menu
--------------------------------------- */
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 1){  
-            $('#sticky-header').addClass("sticky");
-        }
-        else{
-            $('#sticky-header').removeClass("sticky");
-        }
+(function ($)
+  { "use strict"
+  
+/* 1. Proloder */
+    $(window).on('load', function () {
+      $('#preloader-active').delay(450).fadeOut('slow');
+      $('body').delay(450).css({
+        'overflow': 'visible'
+      });
     });
-    
-/*------------------------------------
-    02. Owl Carousel
-------------------------------------- */
-/*------------------------------------
-    Testimonial Carousel
-------------------------------------- */
-	$('.testimonial-carousel').owlCarousel({
-		loop:true,
-		margin:0,
-		nav:false,
-		animateOut: 'slideOutDown',
-		animateIn: 'zoomInLeft',		
-		autoplay:false,
-        dots:false,
-		smartSpeed:3000,
-		navText: ["<i class='zmdi zmdi-chevron-left'></i>","<i class='zmdi zmdi-chevron-right'></i>"],
-		responsive:{
-			0:{
-				items:1
-			},
-			600:{
-				items:1
-			},
-			1000:{
-				items:1
-			}
-		}
-	});	
-    
-/*------------------------------------
-    Blog Carousel
--------------------------------------- */
-    $('.blog-carousel').owlCarousel({
-        loop:true,
-        autoPlay: false, 
-        smartSpeed: 2000,
-        fluidSpeed: true,
-        nav:false,
-        dots:false,
-        margin:30,
-        navText: ["<i class='zmdi zmdi-chevron-left'></i>","<i class='zmdi zmdi-chevron-right'></i>"],
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1 // from 0px up to 479px screen size 
-            },
-            480:{
-                items:1, // from 480 to 677 
-            },
-            768:{
-                items:2, // from this breakpoint 678 to 959
-            },
-            960:{
-                items:2, // from this breakpoint 960 to 1199
-            },
-            1200:{
-                items:3,
-                loop:false,
+
+
+/* 2. slick Nav */
+// mobile_menu
+    var menu = $('ul#navigation');
+    if(menu.length){
+      menu.slicknav({
+        prependTo: ".mobile_menu",
+        closedSymbol: '+',
+        openedSymbol:'-'
+      });
+    };
+
+
+/* 3. MainSlider-1 */
+    function mainSlider() {
+      var BasicSlider = $('.slider-active');
+      BasicSlider.on('init', function (e, slick) {
+        var $firstAnimatingElements = $('.single-slider:first-child').find('[data-animation]');
+        doAnimations($firstAnimatingElements);
+      });
+      BasicSlider.on('beforeChange', function (e, slick, currentSlide, nextSlide) {
+        var $animatingElements = $('.single-slider[data-slick-index="' + nextSlide + '"]').find('[data-animation]');
+        doAnimations($animatingElements);
+      });
+      BasicSlider.slick({
+        autoplay: false,
+        autoplaySpeed: 10000,
+        dots: false,
+        fade: true,
+        arrows: false,
+        prevArrow: '<button type="button" class="slick-prev"><i class="ti-shift-left"></i></button>',
+        nextArrow: '<button type="button" class="slick-next"><i class="ti-shift-right"></i></button>',
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
             }
-        }        
-    }); 
-    
-/*------------------------------------
-    Category Job Active
--------------------------------------- */
-	$('.category-job-list-actiive').owlCarousel({
-		loop:true,
-        autoPlay: false, 
-        smartSpeed: 1000,
-        margin:25,
-		nav:false,
-        dots:true,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1 // from 0px up to 479px screen size 
-            },
-            480:{
-                items:1, // from 480 to 677 
-            },
-            767:{
-                items:2, // from this breakpoint 678 to 959
-            },
-            960:{
-                items:4, // from this breakpoint 960 to 1199
-            },
-            1200:{
-                items:4,
-                loop:false,
+          },
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows: false
             }
-        }        
-    }); 
-	
-/*-------------------------------------------
-    03. ScrollUp jquery
---------------------------------------------- */
-    $.scrollUp({
-        scrollText: '<i class="fa fa-angle-up"></i>',
-        easingType: 'linear',
-        scrollSpeed: 900,
-        animation: 'fade'
-    });   
-    
-/*-------------------------------------------
-    04. wow js active
---------------------------------------------- */
-    new WOW().init();
-    
-/*-------------------------------------------
-    05. jQuery MeanMenu
---------------------------------------------- */
-	jQuery('nav#dropdown').meanmenu();
-	
-/*--------------------------
-    06. Counter Up
----------------------------- */	
-    $('.counter').counterUp({
-        delay: 70,
-        time: 5000
-    }); 
-    
-/*------------------------------------
-	07. Textilate Activation
---------------------------------------*/
-    $('.tlt').textillate({
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows: false
+            }
+          }
+        ]
+      });
+
+      function doAnimations(elements) {
+        var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        elements.each(function () {
+          var $this = $(this);
+          var $animationDelay = $this.data('delay');
+          var $animationType = 'animated ' + $this.data('animation');
+          $this.css({
+            'animation-delay': $animationDelay,
+            '-webkit-animation-delay': $animationDelay
+          });
+          $this.addClass($animationType).one(animationEndEvents, function () {
+            $this.removeClass($animationType);
+          });
+        });
+      }
+    }
+    mainSlider();
+
+
+
+/* 4. Testimonial Active*/
+    var testimonial = $('.h1-testimonial-active');
+    if(testimonial.length){
+    testimonial.slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        autoplay:true,
+        arrows: false,
+        prevArrow: '<button type="button" class="slick-prev"><i class="ti-angle-left"></i></button>',
+        nextArrow: '<button type="button" class="slick-next"><i class="ti-angle-right"></i></button>',
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              arrow:false
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows:false
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows:false,
+            }
+          }
+        ]
+      });
+    }
+
+/* 5. Gallery Active */
+    var client_list = $('.completed-active');
+    if(client_list.length){
+      client_list.owlCarousel({
+        slidesToShow: 2,
+        slidesToScroll: 1,
         loop: true,
-        minDisplayTime: 2500
-    });
-    
-/*------------------------------------
-	08. Video Player
---------------------------------------*/
-    $(".player").YTPlayer({
-        showControls: false
-    });    
-    
-    $(".player-small").YTPlayer({
-        showControls: true
-    });
-    
-    $(".player-blog").YTPlayer({
-        showControls: true
-    });
-    
-/*------------------------------------
-	09. Mail Chimp
---------------------------------------*/
-    $('#mc-form').ajaxChimp({
-        language: 'en',
-        callback: mailChimpResponse,
-        // ADD YOUR MAILCHIMP URL BELOW HERE!
-        url: 'http://themeshaven.us8.list-manage.com/subscribe/post?u=759ce8a8f4f1037e021ba2922&amp;id=a2452237f8'
-    });
-    
-    function mailChimpResponse(resp) {
-        
-        if (resp.result === 'success') {
-            $('.mailchimp-success').html('' + resp.msg).fadeIn(900);
-            $('.mailchimp-error').fadeOut(400);
-            
-        } else if(resp.result === 'error') {
-            $('.mailchimp-error').html('' + resp.msg).fadeIn(900);
-        }  
+        autoplay:true,
+        speed: 3000,
+        smartSpeed:2000,
+        nav: false,
+        dots: false,
+        margin: 15,
+
+        autoplayHoverPause: true,
+        responsive : {
+          0 : {
+            items: 1
+          },
+          768 : {
+            items: 2
+          },
+          992 : {
+            items: 2
+          },
+          1200:{
+            items: 3
+          }
+        }
+      });
     }
 
 
-        /*----------------------------
-    17. Nice Select Activation
-    ------------------------------ */
-    $('select').niceSelect();
+/* 6. Nice Selectorp  */
+  var nice_Select = $('select');
+    if(nice_Select.length){
+      nice_Select.niceSelect();
+    }
 
+/* 7.  Custom Sticky Menu  */
+    $(window).on('scroll', function () {
+      var scroll = $(window).scrollTop();
+      if (scroll < 245) {
+        $(".header-sticky").removeClass("sticky-bar");
+      } else {
+        $(".header-sticky").addClass("sticky-bar");
+      }
+    });
+
+    $(window).on('scroll', function () {
+      var scroll = $(window).scrollTop();
+      if (scroll < 245) {
+          $(".header-sticky").removeClass("sticky");
+      } else {
+          $(".header-sticky").addClass("sticky");
+      }
+    });
+
+
+
+/* 8. sildeBar scroll */
+    $.scrollUp({
+      scrollName: 'scrollUp', // Element ID
+      topDistance: '300', // Distance from top before showing element (px)
+      topSpeed: 300, // Speed back to top (ms)
+      animation: 'fade', // Fade, slide, none
+      animationInSpeed: 200, // Animation in speed (ms)
+      animationOutSpeed: 200, // Animation out speed (ms)
+      scrollText: '<i class="ti-arrow-up"></i>', // Text for element
+      activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+    });
+
+
+/* 9. data-background */
+    $("[data-background]").each(function () {
+      $(this).css("background-image", "url(" + $(this).attr("data-background") + ")")
+      });
+
+
+/* 10. WOW active */
+    new WOW().init();
+
+/* 11. Datepicker */
     
+// 11. ---- Mailchimp js --------//  
+    function mailChimp() {
+      $('#mc_embed_signup').find('form').ajaxChimp();
+    }
+    mailChimp();
+
+
+// 12 Pop Up Img
+    var popUp = $('.single_gallery_part, .img-pop-up');
+      if(popUp.length){
+        popUp.magnificPopup({
+          type: 'image',
+          gallery:{
+            enabled:true
+          }
+        });
+      }
+
+
+
+
 })(jQuery);

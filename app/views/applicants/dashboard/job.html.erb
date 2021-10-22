@@ -1,56 +1,113 @@
-<div class="job-categroy-area2 pt-130 pb-100 pt-sm-60 pb-sm-40">
-                  <div class="container">
-                    <!-- Section Title Start -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="section-title text-center ">
-                                <h2>All Jobs</h2>
-                                <p>Lorem ipsum dolor sit amet, contetur adipisil elit sed do</p>
+<div class="our-services section-pad-t30">
+            <div class="container">
+                <!-- Section Tittle -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center">
+                            <span>FEATURED TOURS Packages</span>
+                            <h2>Browse Top Categories </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-contnet-center">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-tour"></span>
+                            </div>
+                            <div class="services-cap">
+                               <h5><a href="job_listing.html">Design &amp; Creative</a></h5>
+                                <span>(653)</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Search start -->
-                    <%= render partial: 'layouts/shared/search'%>
-                    <!-- Search End -->
-                    <!-- Section Title End -->
-                    <div class="all-job-post">
-                        <!-- Nav tabs -->
-                        <div class="post-tab nav">
-                            <a class="nav-link active show" data-toggle="tab" href="#recent_job">RECENT JOBS</a>
-                            <a class="nav-link" data-toggle="tab" href="#part_time">PART TIME</a>
-                            <a class="nav-link" data-toggle="tab" href="#full_time">FULL TIME</a>
-                        </div>                            
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active show" id="recent_job">
-                                <div class="row">
-                                    <%@jobs.each_with_index do |job, index| %>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6><%= job.company_name.titleize %></h6>
-                                                <p><span><%= job.title.titleize %></span></p>
-                                                <p>Location : <%= job.locality.titleize %></p>
-                                                <p>Job Type : <%= job.job_type.titleize %></p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
-                                    <%end%>
-                                </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-cms"></span>
                             </div>
-                            <div class="tab-pane " id="part_time">
-                                <%=render partial: 'part_time' %>
+                            <div class="services-cap">
+                               <h5><a href="job_listing.html">Design &amp; Development</a></h5>
+                                <span>(658)</span>
                             </div>
-                            <div class="tab-pane " id="full_time">
-                                <%=render partial: 'full_time' %>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-report"></span>
+                            </div>
+                            <div class="services-cap">
+                               <h5><a href="job_listing.html">Sales &amp; Marketing</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-app"></span>
+                            </div>
+                            <div class="services-cap">
+                               <h5><a href="job_listing.html">Mobile Application</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-helmet"></span>
+                            </div>
+                            <div class="services-cap">
+                               <h5><a href="job_listing.html">Construction</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-high-tech"></span>
+                            </div>
+                            <div class="services-cap">
+                               <h5><a href="job_listing.html">Information Technology</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-real-estate"></span>
+                            </div>
+                            <div class="services-cap">
+                               <h5><a href="job_listing.html">Real Estate</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-content"></span>
+                            </div>
+                            <div class="services-cap">
+                               <h5><a href="job_listing.html">Content Writer</a></h5>
+                                <span>(658)</span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- More Btn -->
+                <!-- Section Button -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="browse-btn2 text-center mt-50">
+                            <a href="<%=all_jobs_applicants_dashboard_index_url%>" class="border-btn2">Browse All Sectors</a>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+<%= render partial:'featured_job'%>

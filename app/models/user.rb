@@ -8,6 +8,7 @@ class User < ApplicationRecord
   rolify
   has_many :jobs
   has_many :applied_jobs, :class_name => 'AppliedJob', :foreign_key => :applicant_id
+  has_one :subscription
 
 
   has_many :favorite_jobs  

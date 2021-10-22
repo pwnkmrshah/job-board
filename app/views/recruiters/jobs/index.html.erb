@@ -16,19 +16,12 @@
   <div class="container">
     <div id="jobs">
     <%= render "job_list" %>
+    <%= will_paginate @jobs%>
     </div>
   </div>
 </div>
 <div class="pagination-outer">
   <nav aria-label="Page navigation">
-    <%= will_paginate @jobs, renderer: BootstrapPagination::Rails %>
   </nav>
 </div>
   
-
-
-  <script>
-   $(function(){
-     $('.pagination a').attr('data-remote', 'true')
-   });
- </script>

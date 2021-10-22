@@ -21,7 +21,6 @@ class Recruiters::JobsController < ApplicationController
 		byebug
 		job = Job.new(job_params)
 		job.save!
-		JobMailer.post_job(job).deliver_now
 		redirect_to recruiters_jobs_path, notice: "Job added."
 	end
 

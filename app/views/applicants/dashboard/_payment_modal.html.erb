@@ -1,0 +1,44 @@
+<div class="modal fade " id="bookLesson" tabindex="-1" aria-labelledby="bookLessonLabel" aria-hidden="true">
+   <div class="modal-dialog custom-modal modal-lg" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h2 class="modal-title title-sm mb-0 modal-title" id="exampleModalLabel">Payment</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class="calendar-outer">
+               <%= form_tag subscription_applicants_dashboard_url(current_user.id), :method => 'post', :class=>'form-contact contact_form', id:"payment-form", novalidate:'novalidate' do %>
+                  <%= hidden_field_tag :paid_amount, 10 %>
+                  <%= hidden_field_tag :user_id, current_user.id %>
+                  <%= hidden_field_tag :start_date, Date.today %>
+                  <%= hidden_field_tag :end_date, Date.today + 1.year %>
+                  <div class="row">
+                     <div class="col-md-6 col-12">
+                        <div class="form-group">
+                           <label for="cc-number-label" class="control-label">Card number formatting <small class="text-muted">[<span class="cc-brand"></span>]</small></label>
+                           <input id="cc-number" type="tel" value="4242424242424242"  class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" name="card_number">
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-12">
+                        <div class="form-group">
+                           <label for="cc-exp-label" class="control-label">Card expiry formatting</label>
+                           <input id="cc-exp" type="tel" value="12 / 2024" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••••" name="card_expiry_date">
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-12">
+                        <div class="form-group">
+                           <label for="cc-cvc-label" class="control-label">Card CVC formatting</label>
+                           <input id="cc-cvc" type="password" value="123" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="•••" name="card_cvc">
+                        </div>
+                     </div>
+                  </div>
+                  <button type="submit" class="make_stripe_payment btn cl-btn grd-bg text-uppercase search_result mr-md-4 mr-sm-3 mr-2" title="Make Payment">Make Payment</button>
+                  <a href="javascript:void(0);"  class="btn cl-btn white-btn text-uppercase" data-dismiss="modal" title="Close">Close</a>
+               <%end%>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

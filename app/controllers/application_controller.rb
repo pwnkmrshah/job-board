@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
       if resource.has_role? :applicant
         applicants_dashboard_index_path
       elsif resource.has_role? :recruiter
-        recruiters_dashboard_index_path
+        # recruiters_dashboard_index_path
+        my_account_recruiters_dashboard_index_path
       else
         root_path
       end

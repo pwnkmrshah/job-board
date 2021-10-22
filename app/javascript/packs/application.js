@@ -3,85 +3,65 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+require.context('../img', true)
+
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-require("jquery")
-// require('stylesheets')
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-
 import "bootstrap"
+import "@fortawesome/fontawesome-free/css/all"
 import "@fortawesome/fontawesome-free/js/all"
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import "@fortawesome/fontawesome-free/css/all"
 
 
 import "../stylesheets/application.scss" 
+import "../scss/brands.scss" 
+import "../scss/fontawesome.scss" 
+import "../scss/regular.scss" 
+import "../scss/solid.scss" 
+import "../scss/v4-shims.scss" 
 
-import "../stylesheets/stylesheets.css"
-
-import "../stylesheets/bootstrap.min.css" 
+import "../stylesheets/animate.min.css"
+import "../stylesheets/bootstrap.min.css"
+import "../stylesheets/flaticon.css"
+import "../stylesheets/magnific-popup.css"
+import "../stylesheets/nice-select.css"
+import "../stylesheets/fontawesome-all.min.css" 
+import "../stylesheets/owl.carousel.min.css" 
 import "../stylesheets/responsive.css" 
-// import "../stylesheets/fontawesome.css" 
-// import "../stylesheets/fontawesome.min.css" 
-// import "../stylesheets/font-awesome.min.css" 
-import "../stylesheets/all.css" 
-import "../stylesheets/all.min.css" 
-import "../stylesheets/brands.css" 
-import "../stylesheets/brands.min.css"
-import "../stylesheets/regular.css" 
-import "../stylesheets/regular.min.css" 
-import "../stylesheets/solid.css" 
-import "../stylesheets/solid.min.css" 
-
-
-
+import "../stylesheets/slick.css" 
+import "../stylesheets/slicknav.css" 
 import "../stylesheets/style.css" 
-import "../stylesheets/default.css" 
-import "../stylesheets/nice-select.css" 
+import "../stylesheets/themify-icons.css" 
 
-
-// import "../stylesheets/bootstrap.css" 
-
-import "../stylesheets/slider.css" 
-import "../stylesheets/animated-headlines.css" 
-import "../stylesheets/owl.carousel.css" 
-
-import "../stylesheets/select2.min.css" 
-
-// import "packs/jquery-min.js" 
-// import "packs/jquery-3.5.1.slim.min.js" 
-// import "packs/jquery.validate.min.js" 
-
-import "packs/additional-methods.min.js" 
-import "packs/all.min.js" 
-import "packs/bootstrap.min.js"
-
+import "packs/jquery.payment.js" 
+import "packs/stripe_validation.js" 
+import "packs/animated.headline.js" 
+import "packs/bootstrap.min.js" 
+import "packs/contact.js" 
+import "packs/jquery.ajaxchimp.min.js" 
+import "packs/jquery.form.js" 
+import "packs/jquery.magnific-popup.js" 
+import "packs/jquery.nice-select.min.js" 
+import "packs/jquery.paroller.min.js" 
+import "packs/jquery.scrollUp.min.js" 
+import "packs/jquery.slicknav.min.js" 
+import "packs/jquery.sticky.js" 
+import "packs/jquery.validate.min.js" 
+import "packs/main.js" 
+import "packs/mail-script.js" 
+import "packs/one-page-nav-min.js" 
+import "packs/owl.carousel.min.js" 
+import "packs/plugins.js" 
 import "packs/popper.min.js" 
+import "packs/price_rangs.js" 
 import "packs/slick.min.js" 
-
-import "../js/all.js" 
-import "../js/brands.js" 
-import "../js/brands.min.js" 
-import "../js/regular.js" 
-import "../js/regular.min.js" 
-import "../js/solid.js" 
-import "../js/solid.min.js" 
-import "../js/fontawesome.js" 
-import "../js/fontawesome.min.js" 
-import "../js/jquery.nice-select.min.js" 
-import "../js/owl.carousel.min.js" 
-import "../js/plugins.js"
-import "../js/regular.js"
-
- 
-
-
-
+import "packs/wow.min.js" 
 
 
 document.addEventListener("turbolinks:load", function() {
