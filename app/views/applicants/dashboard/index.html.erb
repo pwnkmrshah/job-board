@@ -29,9 +29,9 @@
                                 </div>
                                 <div class="address">
                                     <h6><%= job.company_name.titleize %></h6>
-                                    <p><span><%= job.title.titleize %></span></p>
-                                    <p>Location : <%= job.locality.titleize %></p>
-                                    <p>Job Type : <%= job.job_type.titleize %></p>
+                                    <p><span><%= job.title&.titleize %></span></p>
+                                    <p>Location : <%= job.locality&.titleize %></p>
+                                    <p>Job Type : <%= job.job_type&.titleize %></p>
                                 </div>
                               <%if already_applied(job).present?%>
                                 Already Applied

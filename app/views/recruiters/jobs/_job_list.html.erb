@@ -18,7 +18,7 @@
           <tr>
             <td><%= job.company_name%></td>
             <td><%= job.title%></td>
-            <td><%= job.job_type%></td>
+            <td><%= job.job_type&.titleize%></td>
             <td><%= job.category%></td>
             <td>
               <!-- <a  class="btn btn-primary" href="<%= recruiters_job_path(job.id) %>"><i class="far fa-eye"></i></a>

@@ -76,3 +76,5 @@ gem 'font-awesome-sass', '~> 4.4.0'
 gem 'stripe', '~> 5.39'
 gem 'toastr-rails', '~> 1.0'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'sidekiq', '~>6.0.0'
+

@@ -75,22 +75,7 @@ config.action_cable.url = "ws:localhost:3000/cable"
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-    
-  config.action_mailer.asset_host = 'localhost'
-
-
-  config.action_mailer.default_url_options = { host: 'localhost:3000'}
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'mail.google.com',
-    :user_name            => 'pwnkmrshah@gmail.com',
-    :password             => 'bcqnudtzmgbzrhrs',
-    :authentication       => :plain
-    # :enable_starttls_auto => true,
-  }
+   
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end

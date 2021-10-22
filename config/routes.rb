@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   get "home/find_jobs" => "home#find_jobs"
 
   resources :messages
-# get "jobs/download_pdf"
 
 
   namespace :recruiters do
@@ -34,6 +33,10 @@ Rails.application.routes.draw do
           get  :candidates
           get  :download_pdf
           get  :view_application
+      end
+      member do
+        get  :approve_resume
+        get  :reject_resume
       end
     end
   end
