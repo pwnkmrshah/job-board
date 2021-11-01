@@ -27,6 +27,50 @@ class Applicants::DashboardController < ApplicationController
 
 	def subscription
 		if request.post?
+		check_stripe_customer_id  unless current_user.stripe_customer_id  			
+		Stripe.api_key = STRIPE_SECRET
+		# Create a  payment
+		begin
+			payment = Stripe::PaymentMethod.create({
+								  type: 'card',
+									card: {
+									number: params[:card_number],
+									exp_month: params[:exp_month],
+									exp_year: params[:exp_year],
+									cvc: params[:cvc]
+									}
+								})
+
+			puts "============payment created=========================="
+
+		Stripe::PaymentMethod.attach(
+									  payment.id,
+									  {customer: current_user.stripe_customer_id},
+									)
+		puts "============pay method attached=========================="
+		# update customer default payment method
+			pay_method  = Stripe::Customer.update(
+												current_user.stripe_customer_id, 
+												{invoice_settings: 
+													{default_payment_method: payment.id}
+												},
+											)
+		puts "============ pay method updated=========================="
+		# Create subscription
+			plan = Plan.first
+			subscribe  =	Stripe::Subscription.create({
+											  customer: current_user.stripe_customer_id,
+											  items: [
+											    {price: plan.stripe_price_id},
+											  ]
+											})
+			puts "============subscription created=========================="
+			subscription = current_user.build_subscription(subscription_params) if subscribe
+		rescue StandardError => e
+			puts "============#{e.message}=========================="
+		end
+			
+		# if request.post?
 			# success = false
 			# Stripe.api_key = STRIPE_SECRET
 			# 	begin
@@ -47,7 +91,7 @@ class Applicants::DashboardController < ApplicationController
 
 			# 		subscription = current_user.build_subscription(subscription_params) if charge&.paid
 			# 		subscription.save!
-					render json: {success: true, message:'Subscription done.'}
+					# render json: {success: true, message:'Subscription done.'}
 
 				# rescue StandardError => e
 				#   flash[:error] = e.message

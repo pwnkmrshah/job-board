@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   attr_accessor :role
+  after_create  :create_stripe_customer
   # enum role: [ :applicant, :recruiter]
   rolify
   has_many :jobs
@@ -24,5 +25,16 @@ class User < ApplicationRecord
       has_attached_file :dp
     validates_attachment :dp,
                      content_type: { content_type: /\Aimage\/.*\z/ }
+
+
+
+  def create_stripe_customer
+    user  = User.last
+    Stripe.api_key = STRIPE_SECRET
+    cutomer = Stripe::Customer.create({
+          email: user.email,
+        })  
+    user.update(stripe_customer_id: cutomer.id)
+  end
 
 end

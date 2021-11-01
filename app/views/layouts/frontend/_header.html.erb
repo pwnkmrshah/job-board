@@ -51,6 +51,7 @@
                                 </div>          
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-right d-lg-block">
+                                    <%= link_to 'Upgrade', subscription_applicants_dashboard_url(current_user.id), method: :get, class: "btn head-btn2" %>
                                     <%= link_to 'Sign out', destroy_user_session_path, method: :get, class: "btn head-btn2" %>
                                 </div>
                             </div>
