@@ -34,6 +34,10 @@ config.action_cable.url = "ws:localhost:3000/cable"
 
     config.cache_store = :null_store
   end
+  ActiveAdmin.setup do |config|
+    config.use_webpacker = true
+  end
+
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
