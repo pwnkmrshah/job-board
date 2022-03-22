@@ -7,4 +7,7 @@ class UserMailer < Devise::Mailer
 
   layout  'mailer'
 
+  def subscribe(user)
+    mail(to: 'pwnkmrshah@gmail.com', subject: "Subscribe now for premium.") 
+  end
 end

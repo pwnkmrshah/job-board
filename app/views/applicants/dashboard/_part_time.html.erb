@@ -9,6 +9,7 @@
                 <h6><%= job.company_name.titleize %></h6>
                 <p><span><%= job.title.titleize %></span></p>
                 <p>Location : <%= job.locality.titleize %></p>
+                <p>Job Type : <%= job.job_type.titleize %></p>
             </div>
             <div class="button-box"><a href="<%= applicants_job_path(job.id)%>" class="button button-black">APPLY NOW</a></div>
 	          <div class="button-box">

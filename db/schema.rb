@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_051611) do
+ActiveRecord::Schema.define(version: 2021_11_02_061705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(version: 2021_10_10_051611) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "plans", force: :cascade do |t|
+    t.string "stripe_plan_id"
+    t.string "stripe_product_id"
+    t.string "stripe_price_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -94,6 +102,19 @@ ActiveRecord::Schema.define(version: 2021_10_10_051611) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.decimal "paid_amount", precision: 10, scale: 2
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "stripe_plan_id"
+    t.bigint "plan_id"
+    t.index ["plan_id"], name: "index_subscriptions_on_plan_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,6 +131,15 @@ ActiveRecord::Schema.define(version: 2021_10_10_051611) do
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "address"
+    t.integer "total_experience"
+    t.string "qualification"
+    t.string "dp_file_name"
+    t.string "dp_content_type"
+    t.integer "dp_file_size"
+    t.datetime "dp_updated_at"
+    t.string "stripe_customer_id"
+    t.string "stripe_payment_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

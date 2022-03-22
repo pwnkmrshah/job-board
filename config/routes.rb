@@ -13,15 +13,17 @@ Rails.application.routes.draw do
   }
   get "home/index" 
   root to: 'home#index'
+  
+  get "home/find_jobs" => "home#find_jobs"
 
   resources :messages
-# get "jobs/download_pdf"
 
 
   namespace :recruiters do
-
     resources :dashboard do
       collection do
+          get  :my_account
+          post  :my_account
           get  :user_list
           get  :chat_with_candidate
       end
@@ -30,6 +32,11 @@ Rails.application.routes.draw do
       collection do
           get  :candidates
           get  :download_pdf
+          get  :view_application
+      end
+      member do
+        get  :approve_resume
+        get  :reject_resume
       end
     end
   end
@@ -37,18 +44,26 @@ Rails.application.routes.draw do
 
   namespace :applicants do
     resources :dashboard do
+      member do
+        get :application_detail
+        # get :subscription
+        match  :subscription, via: [:get,  :post]
+      end
       collection do
         match  :job, via: [:get,  :post]
+        get :my_applications
       end
     end 
 
-    resources :jobs, only: :show do
+    resources :jobs, only: [:show, :index] do
       member do
         post  :apply_job
         get  :add_to_favorites
+        get :job_detail
         put :favorite
       end
       collection do
+        get :all_jobs
         get  :my_favourite_jobs
       end
     end 

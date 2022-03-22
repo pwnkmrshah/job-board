@@ -1,0 +1,46 @@
+<style type="text/css">
+.d-none{
+	display: none;
+}
+</style>
+<div class="container">
+	<div class="row" id="search">
+		<form id="search-form" action="" method="POST" enctype="multipart/form-data">
+			<div class="form-group col-xs-9">
+				<input class="form-control  srch_by_keyword" type="text" placeholder="Search by Company Name/Title"/>
+			</div>
+		</form>
+	</div>
+	<div class="row" id="filter">
+			<div class="form-group col-sm-3 col-xs-6">
+				<%= select_tag(:location, options_for_select(@jobs.map(&:locality)), {class: "filter-make filter form-control srch_by_location",prompt: "Select Location"}) %>
+			</div>
+			<div class="form-group col-sm-3 col-xs-6">
+				<select data-filter="model" class="filter-model filter form-control srch_by_job_type">
+					<option value="">Select Job Type</option>
+					<option value="Full Time">Full Time</option>
+					<option value="Part Time">Part Time</option>
+				</select>
+			</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$( document ).ready(function() { 
+		$( ".srch_by_location, .srch_by_job_type" ).change(function () {
+			
+			srch_txt = $(this).val()
+			
+	    	$(".col-md-6").addClass('d-none');
+	    	$(".col-md-6:contains("+srch_txt+")").removeClass('d-none');
+		});
+
+		$( ".srch_by_keyword" ).keyup(function () {
+			srch_txt = $(this).val()
+			// debugger
+			// alert(srch_txt)
+	    	$(".col-md-6").addClass('d-none');
+	    	$(".col-md-6:contains("+srch_txt+")").removeClass('d-none');
+		});
+	})
+
+</script>

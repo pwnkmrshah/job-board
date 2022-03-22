@@ -1,142 +1,54 @@
-
-
-After login page for applicants
-
-<%= link_to 'Sign out', destroy_user_session_path ,:method => :delete %>
-
-<%#= link_to 'My job', new_recruiters_job_path %>
-
-<%= link_to 'List job', job_applicants_dashboard_index_path %>
-
-<%= link_to 'Favorite jobs', my_favourite_jobs_applicants_jobs_path %>
-
 <div class="job-post-area pb-100 pb-sm-35">
-                <div class="container">
-                    <!-- Section Title Start -->
+    <div class="container">
+        <!-- Section Title Start -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center ">
+                    <h2>All Job</h2>
+                    <p>Apply for jobs...</p>
+                </div>
+            </div>
+        </div>
+        <%= render partial: 'layouts/shared/search'%>
+        <!-- Section Title End -->
+        <div class="all-job-post">
+            <!-- Nav tabs -->
+            <div class="post-tab nav">
+                <a class="nav-link active show" data-toggle="tab" href="#recent_job">RECENT JOBS</a>
+            </div>                            
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active show" id="recent_job">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="section-title text-center ">
-                                <h2>All Job</h2>
-                                <p>Apply for jobs...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Section Title End -->
-                    <div class="all-job-post">
-                        <!-- Nav tabs -->
-                        <div class="post-tab nav">
-                            <a class="nav-link active show" data-toggle="tab" href="#recent_job">RECENT JOBS</a>
-                            <a class="nav-link" data-toggle="tab" href="#part_time">PART TIME</a>
-                            <a class="nav-link" data-toggle="tab" href="#full_time">FULL TIME</a>
-                        </div>                            
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active show" id="recent_job">
-                                <div class="row">
-                                	<%@jobs.each_with_index do |job, index| %>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6><%= job.company_name.titleize %></h6>
-                                                <p><span><%= job.title.titleize %></span></p>
-                                                <p>Location : <%= job.locality.titleize %></p>
-                                            </div>
-                                            <div class="button-box"><a href="<%= applicants_job_path(job.id)%>" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
-                                    <%end%>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6>Hiring Web designer &amp; Developer</h6>
-                                                <p>Publisher : Company Name</p>
-                                                <p>In : Designer</p>
-                                                <p>Date : 12.06.2018</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6>SEO Analiyst &amp; Reviewer</h6>
-                                                <p>Publisher : Company Name</p>
-                                                <p>In : Designer</p>
-                                                <p>Date : 11.02.2018</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6>Content Writer and Speaker</h6>
-                                                <p>Publisher : Company Name</p>
-                                                <p>In : Education</p>
-                                                <p>Date : 14.09.2018</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6>Hiring Online English Teachers</h6>
-                                                <p>Publisher : Company Name</p>
-                                                <p>In : Designer</p>
-                                                <p>Date : 14.09.2018</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="single-job-post">
-                                             <div class="img-icon">
-                                                <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
-                                            </div>
-                                            <div class="address">
-                                                <h6>Social Media Expert</h6>
-                                                <p>Publisher : Company Name</p>
-                                                <p>In : Media</p>
-                                                <p>Date : 14.09.2018</p>
-                                                <p>Location : Dhaka</p>
-                                            </div>
-                                            <div class="button-box"><a href="#" class="button button-black">APPLY NOW</a></div>
-                                            
-                                        </div>                                    
-                                    </div>
+                    	<%@jobs.each_with_index do |job, index| %>
+                        <div class="col-md-6">
+                            <div class="single-job-post">
+                                 <div class="img-icon">
+                                    <%#= image_tag 'company-logo/1.png', alt: 'icon' %>
+                                     <img src='/assets/images/company-logo/company.png' alt='icon' />
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="part_time">
-                                <%=render partial: 'part_time'%>
-                            </div>
-                            <div class="tab-pane" id="full_time">
-                                <%=render partial: 'full_time'%>
-                            </div>
+                                <div class="address">
+                                    <h6><%= job.company_name.titleize %></h6>
+                                    <p><span><%= job.title&.titleize %></span></p>
+                                    <p>Location : <%= job.locality&.titleize %></p>
+                                    <p>Job Type : <%= job.job_type&.titleize %></p>
+                                </div>
+                              <%if already_applied(job).present?%>
+                                Already Applied
+                              <%else%>
+                              <div class="button-box"><a href="<%= applicants_job_path(job.id)%>" class="button button-black">APPLY NOW</a></div> </a>
+                               
+                               <%end%>
+                              <!-- <a href="<%#=job.resume.url(:original, false)%>" download="data" class="button button-black">VIEW RESUME</a> -->
+                            <!-- </div> -->
+                                
+                            </div>                                    
                         </div>
+                        <%end%>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+

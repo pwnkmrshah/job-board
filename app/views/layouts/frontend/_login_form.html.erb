@@ -1,38 +1,88 @@
-<div id="quickview-login">
-            <!-- Modal -->
-            <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="bi bi-x"></i></span></button>
+<div class="modal fade " id="productModal" tabindex="-1" aria-labelledby="productModal" aria-hidden="true">
+   <div class="modal-dialog custom-modal modal-lg" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h2 class="modal-title title-sm mb-0 modal-title" id="exampleModalLabel">Login</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class="calendar-outer">
+               <%= form_for(resource, as: resource_name, url: new_user_session_path,  :html => {:id => "login_form"} ) do |f| %>
+               <%#= form_for(resource, as: resource_name, url: new_user_session_path), :method => 'post', :class=>'form-contact contact_form', id:"payment-form", novalidate:'novalidate' do %>
+                  <div class="row">
+                     <div class=" col-12">
+                        <div class="form-group">
+                           <label for="cc-number-label" class="control-label">Email*</label>
+                           <!-- <input id="cc-number" type="tel" value="4242424242424242"  class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" name="card_number"> -->
+                           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'Email', class:'input-lg form-control' %>
                         </div>
-                        <div class="modal-body">
-                            <div class="form-pop-up-content ptb-60 pl-60 pr-60">
-                                <div class="area-title text-center mb-43">
-                                    <img src="images/logo/logo.png" alt="jobhere">
-                                </div>
-                                <%= form_for(resource, as: resource_name, url: new_user_session_path) do |f| %>
-                                    <div class="form-box">
-                                        <!-- <input type="text" name="username" placeholder="Email" class="mb-14">
-                                        <input type="password" name="pass" placeholder="Password"> -->
-                                        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'Email', class:'mb-14' %>
-                                        <%= f.password_field :password, autocomplete: "current-password",   placeholder:'Password' %>
-                                    </div>
-                                    <% if devise_mapping.rememberable? %>
-	                                    <div class="fix ptb-30">
-	                                        <!-- <span class="remember pull-left"><input class="p-0 pull-left" type="checkbox">Remember Me</span> -->
-	                                        <span class="remember pull-left"><%= f.check_box :remember_me, class: 'p-0 pull-left' %>Remember Me</span>
-	                                        <!-- <span class="pull-right"><a href="#">Forget Password?</a></span> -->
-	                                    </div>
-                                	<% end %>
-                                    <%= render "devise/shared/links" %>
-                                    <div class="text-center">
-                                        <button type="submit" class="text-uppercase">Login</button>
-                                    </div>
-                                <% end %>
-                            </div>
-                        </div>  
-                    </div>  
-                </div>
+                     </div>
+                     <div class="col-12">
+                        <div class="form-group">
+                           <label for="cc-exp-label" class="control-label">Password*</label>
+                            <%= f.password_field :password, autocomplete: "current-password", class:"input-lg form-control ",   placeholder:'Password' %>
+                           <!-- <input id="cc-exp" type="tel" value="12 / 2024" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••••" name="card_expiry_date"> -->
+                        </div>
+                     </div>
+                  </div>
+                  <button type="submit" class="btn cl-btn grd-bg text-uppercase mr-md-4 mr-sm-3 mr-2" title="Login">Login</button>
+               <%end%>
             </div>
-        </div>
+         </div>
+      </div>
+   </div>
+</div>        
+
+<script type="text/javascript">
+      $("#login_form").validate({
+        rules: {
+          "user[name]": {
+            required: true,
+            minlength: 4,
+            maxlength: 50,
+          },
+          "user[email]": {
+            required: true,
+            isValidEmailAddress:true
+          },
+          "user[password]": {
+            required: true,
+            minlength: 6,
+            maxlength: 20,
+          },
+          "user[confirm_password]": {
+            required: true,
+            minlength: 6,
+            equalTo: "#user_password",
+          }
+        },
+        messages: {
+          "user[user_name]": {
+              required: "Please enter username."
+          },
+          "user[email]": {
+              required: "Please enter email.",
+              isValidEmailAddress: "Please enter a valid email address.",
+              remote: 'Email already have been taken.'
+          },
+          "user[password]": {
+              required: "Please enter password."
+          },
+          "user[confirm_password]": {
+              required: "Please confirm your password.",
+              equalTo: "Password does not match."
+          }
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error)
+          } else {
+            error.insertAfter(element);
+          }
+        }
+  });
+</script>

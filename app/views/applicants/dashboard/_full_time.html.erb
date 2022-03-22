@@ -9,12 +9,13 @@
                 <h6><%= job.company_name.titleize %></h6>
                 <p><span><%= job.title.titleize %></span></p>
                 <p>Location : <%= job.locality.titleize %></p>
+                <p>Job Type : <%= job.job_type.titleize %></p>
             </div>
             <div class="button-box"><a href="<%= applicants_job_path(job.id)%>" class="button button-black">APPLY NOW</a></div>
                <div class="button-box">
 	           <%= form_for :user, :url => chat_with_candidate_recruiters_dashboard_index_path,  :html => { :method => 'GET' } do |f| %>
 	            <%= hidden_field_tag "user_id", current_user.id%>
-	            <%= hidden_field_tag "receiver_id", job.recruiter.id%>
+	            <%#= hidden_field_tag "receiver_id", job.recruiter.id%>
 	            <%= f.submit "Chat"%>
 	        <% end %>
 	        </div>

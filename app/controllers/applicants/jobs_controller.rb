@@ -2,6 +2,11 @@ class Applicants::JobsController < ApplicationController
 	load_and_authorize_resource
 	include Applicants
 
+
+	def index
+		@featured_jobs = Job.featured_jobs.sort
+	end
+
 	def show
 		@job =  Job.find_by_id(params[:id])
 	end
@@ -30,12 +35,19 @@ class Applicants::JobsController < ApplicationController
 		job.status = 'active'
 		job.applied_date   = Date.today
 		job.save!
+		EmailWorker.perform_async  'applied_job', job.id
 		redirect_to applicants_dashboard_index_path
 	end
 
-	def remove_job
-		
+	def job_detail
+		@job = Job.find_by_id(params[:id])
 	end
+
+
+
+
+
+
 
 end
 
